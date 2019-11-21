@@ -36,7 +36,7 @@
       </div>
       <div class="row align-items-start">
         <div class="col-sm">
-          <div class="alert alert-success item-container">
+          <div id="greenalert" class="alert alert-success item-container">
             <div
               v-for="(item, index) in incomeList"
               :key="index"
@@ -53,7 +53,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm">
+        <div id="inputs" class="col-sm">
           <div class="alert alert-primary item-container">
             <div class="input-group mb-3">
               <input
@@ -180,4 +180,14 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@media (max-width: 576px) {
+  #inputs {
+    color: red;
+    order: 1;
+  }
+  #greenalert {
+    margin: 1em 0;
+  }
+}
+</style>
