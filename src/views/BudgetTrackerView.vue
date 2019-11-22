@@ -28,6 +28,9 @@ import Navbar from "@/components/Navbar.vue";
 import BudgetSection from "@/components/BudgetSection.vue";
 import Form from "@/components/Form.vue";
 export default {
+  async mounted() {
+    this.refreshList();
+  },
   components: {
     Button,
     Navbar,
@@ -35,6 +38,14 @@ export default {
     Form
   },
   methods: {
+    refreshList() {
+      this.$http.get(this.backEndUrl + "expenses").then(response => {
+        this.expensesList = response.data;
+      });
+      this.$http.get(this.backEndUrl + "incomes").then(response => {
+        this.incomeList = response.data;
+      });
+    },
     insertNewBudget(eventData) {
       let iznos = parseInt(eventData.iznos);
       if (iznos) {
@@ -43,9 +54,15 @@ export default {
           iznos: iznos
         };
 
-        iznos > 0
-          ? this.incomeList.push(newItem)
-          : this.expensesList.push(newItem);
+        if (iznos > 0) {
+          this.$http.post(this.backEndUrl + "addincome", newItem).then(() => {
+            this.refreshList();
+          });
+        } else {
+          this.$http.post(this.backEndUrl + "addexpense", newItem).then(() => {
+            this.refreshList();
+          });
+        }
       }
     }
   },
@@ -71,6 +88,7 @@ export default {
   },
   data() {
     return {
+      backEndUrl: "http://localhost/elab_php_vue/public/index.php/",
       budget: {
         income: 0,
         balance: 0,
