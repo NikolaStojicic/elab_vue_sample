@@ -6,12 +6,8 @@
       class="alert alert-warning alert-dismissible fade show"
     >
       <strong>{{ item.opis }}</strong>
-      {{ item.iznos }} {{$store.state.currency}}
-      <button
-        @click="listItems.splice(index, 1)"
-        type="button"
-        class="close"
-      >
+      {{ item.iznos }} {{ $store.state.currency }}
+      <button @click="listItems.splice(index, 1)" type="button" class="close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>

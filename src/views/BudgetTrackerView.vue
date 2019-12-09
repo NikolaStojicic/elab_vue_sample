@@ -9,7 +9,11 @@
       </div>
       <div class="row align-items-start">
         <div class="col-sm">
-          <BudgetSection id="greenfix" :listItems="incomeList" labelType="success" />
+          <BudgetSection
+            id="greenfix"
+            :listItems="incomeList"
+            labelType="success"
+          />
         </div>
         <div id="inputs" class="col-sm">
           <Form @insertEvent="insertNewBudget" />

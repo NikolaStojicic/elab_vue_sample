@@ -6,14 +6,21 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon3">Valuta</span>
         </div>
-        <input v-model="currency" type="text" class="form-control" placeholder="Valuta" />
+        <input
+          v-model="currency"
+          type="text"
+          class="form-control"
+          placeholder="Valuta"
+        />
       </div>
       <router-link to="/">
         <button
-          @click="$store.commit('changeCurrency',currency)"
+          @click="$store.commit('changeCurrency', currency)"
           type="button"
           class="btn btn-primary btn-block"
-        >Unesi</button>
+        >
+          Unesi
+        </button>
       </router-link>
     </div>
   </div>
@@ -35,4 +42,3 @@ export default {
   }
 };
 </script>
-

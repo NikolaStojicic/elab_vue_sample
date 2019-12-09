@@ -1,7 +1,10 @@
 <template>
-  <button type="button" :class="`btn btn-${colorButton(name)} btn-lg btn-block`">
-    <span class="text-capitalize">{{name}}:</span>
-    {{ value }} {{$store.state.currency}}
+  <button
+    type="button"
+    :class="`btn btn-${colorButton(name)} btn-lg btn-block`"
+  >
+    <span class="text-capitalize">{{ name }}:</span>
+    {{ value }} {{ $store.state.currency }}
   </button>
 </template>
 
